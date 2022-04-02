@@ -14,6 +14,17 @@ Airport.create(code: 'LGW')
 Airport.create(code: 'DUB')
 Airport.create(code: 'EDI')
 Airport.create(code: 'GIB')
+Airport.create(code: 'LBA')
+Airport.create(code: 'JFK')
+Airport.create(code: 'CDG')
+Airport.create(code: 'HND')
+Airport.create(code: 'NRT')
+Airport.create(code: 'PEK')
+Airport.create(code: 'ORD')
+Airport.create(code: 'BER')
+Airport.create(code: 'GLA')
+Airport.create(code: 'NGO')
+Airport.create(code: 'SFO')
 
 def random_airport_id
   Airport.where.not(id: nil).sample.id
@@ -23,6 +34,6 @@ def rand_datetime
   rand(1.years).seconds.from_now
 end
 
-6.times do
+100.times do
   Flight.create(departure_airport_id: random_airport_id, arrival_airport_id: random_airport_id, departure_datetime: rand_datetime, duration: rand(1000))
 end
