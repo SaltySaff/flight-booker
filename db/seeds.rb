@@ -34,6 +34,6 @@ def rand_datetime
   rand(1.years).seconds.from_now
 end
 
-100.times do
+200.times do
   Flight.create(departure_airport_id: random_airport_id, arrival_airport_id: random_airport_id, departure_datetime: rand_datetime, duration: rand(1000))
 end

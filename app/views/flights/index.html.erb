@@ -8,4 +8,12 @@
   <%= form.select :passenger_number, 1..5 %>
   <%= form.label :departure_datetime, "Date:" %>
   <%= form.select :departure_datetime, @date_options %>
+
+  <%= form.submit "Search" %>
+<% end %>
+
+<% if @results %>
+  <% @results.each do |result| %>
+    <p><%= result.departure_airport.code %> - <%= result.arrival_airport.code %></p>
+  <% end %>
 <% end %>

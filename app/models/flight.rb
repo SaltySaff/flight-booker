@@ -11,4 +11,10 @@ class Flight < ApplicationRecord
       errors.add(:arrival_airport_id, 'must be different to departure_airport_id')
     end
   end
+
+  def self.search_flights(params)
+    flights = Flight.all
+
+    flights = flights.joins(:departure_airport).where(airports: { code: :departure_airport_id })
+  end
 end
