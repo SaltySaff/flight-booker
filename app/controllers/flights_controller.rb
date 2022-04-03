@@ -3,7 +3,9 @@ class FlightsController < ApplicationController
     @flights = Flight.all
     @departure_options = Airport.all.map { |airport| [airport.code, airport.id] }
     @arrival_options = Airport.all.map { |airport| [airport.code, airport.id] }
-    @date_options = Flight.order(:departure_datetime).all.map { |f| [f.departure_datetime.strftime('%d/%m/%Y'), f.departure_datetime.to_date] }
+
+    unique_dates = Flight.order(:departure_datetime).map { |flight| flight.departure_datetime.to_date }.uniq
+    @date_options = unique_dates.map { |date| [date.strftime('%d/%m/%Y'), date] }
 
     if flight_params.empty?
       @results = []
