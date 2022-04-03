@@ -16,5 +16,6 @@
   <p><%= @results.length %> results found.</p>
   <% @results.each do |result| %>
     <p><%= result.departure_airport.code %> - <%= result.arrival_airport.code %></p>
+    <p><%= result.departure_datetime.strftime('%H:%M') %> - <%= result.departure_datetime.strftime('%d/%m/%Y') %></p>
   <% end %>
 <% end %>
