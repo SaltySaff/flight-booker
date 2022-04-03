@@ -13,6 +13,7 @@
 <% end %>
 
 <% if @results %>
+  <p><%= @results.length %> results found.</p>
   <% @results.each do |result| %>
     <p><%= result.departure_airport.code %> - <%= result.arrival_airport.code %></p>
   <% end %>
