@@ -1,4 +1,6 @@
 class Flight < ApplicationRecord
+  attr_accessor :any_date
+  
   validates :departure_airport_id, presence: true
   validate :airport_ids_are_different
 
