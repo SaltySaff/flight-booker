@@ -1,8 +1,11 @@
-
-<% if @results %>
-  <p><%= @results.length %> results found.</p>
+<%= form_with url: '/flights', method: :post do |form| %>
   <% @results.each do |result| %>
-    <p><%= result.departure_airport.name %> - <%= result.arrival_airport.name %></p>
-    <p><%= result.departure_datetime.strftime('%H:%M') %> - <%= result.departure_datetime.strftime('%d/%m/%Y') %></p>
+    <br>
+    <%= form.radio_button :flight, result.id %>
+    <%= form.label :flight, "#{result.departure_airport.name} - #{result.arrival_airport.name}" %><br>
+    <%= form.label :flight, "#{result.departure_datetime.strftime('%H:%M')} - #{result.departure_datetime.strftime('%d/%m/%Y')}", style: 'margin-left: 25px; font-style: italic' %><br>
+    <br>
   <% end %>
+  <%= form.submit "Submit" %>
 <% end %>
+

@@ -1,3 +1,5 @@
 <h1>Flight Search</h1>
 <%= render "flight_search" %>
-<%= render "flight_select"%>
+<% if @results.length > 0 %>
+  <%= render "flight_select"%>
+<% end %>
