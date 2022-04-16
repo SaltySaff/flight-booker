@@ -6,6 +6,7 @@ class Flight < ApplicationRecord
 
   belongs_to :departure_airport, class_name: "Airport"
   belongs_to :arrival_airport, class_name: "Airport"
+  has_many :passengers, through: :bookings
 
   def airport_ids_are_different
     if self.departure_airport_id == self.arrival_airport_id
