@@ -1,0 +1,6 @@
+<h1>Booking Information</h1>
+
+<p>Name: <%= @booking.passenger.name %></p>
+<p>Flight: <%= @booking.flight.departure_airport.name %> - <%= @booking.flight.arrival_airport.name %></p>
+<p>Date: <%= @booking.flight.departure_datetime.strftime('%d/%m/%Y') %></p>
+<p>Time: <%= @booking.flight.departure_datetime.strftime('%H:%M') %> </p>

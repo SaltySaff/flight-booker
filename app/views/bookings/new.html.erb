@@ -1,1 +1,15 @@
 <h1><%= @flight.departure_airport.name %> - <%= @flight.arrival_airport.name %></h1>
+<h2><%= @flight.departure_datetime.strftime('%H:%M') %> - <%= @flight.departure_datetime.strftime('%d/%m/%Y') %></h2>
+
+<%= form_with model: @booking do |form| %>
+  <%= form.hidden_field :flight_id, value: @flight.id %>
+  <%= form.fields_for :passenger, Passenger.new do |p_form| %>
+    <%= p_form.label :name %>
+    <%= p_form.text_field :name %>
+
+    <%= p_form.label :email %>
+    <%= p_form.text_field :email %>
+
+    <%= p_form.submit %>
+  <% end %>
+<% end %>

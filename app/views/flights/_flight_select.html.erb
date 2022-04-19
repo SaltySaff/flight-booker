@@ -1,4 +1,4 @@
-<%= form_with url: new_booking_path, method: :get do |form| %>
+<%= form_with url: bookings_new_path, method: :get do |form| %>
   <% @results.each do |result| %>
     <br>
     <%= form.radio_button :flight, result.id %>
