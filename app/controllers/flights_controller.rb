@@ -3,6 +3,7 @@ class FlightsController < ApplicationController
     @flights = Flight.all
     @departure_options = Airport.all.map { |airport| [airport.name, airport.id] }
     @arrival_options = Airport.all.map { |airport| [airport.name, airport.id] }
+    @passenger_number = flight_params[:passenger_number]
 
     unique_dates = Flight.order(:departure_datetime).map { |flight| flight.departure_datetime.to_date }.uniq
     @date_options = unique_dates.map { |date| [date.strftime('%d/%m/%Y'), date] }
@@ -26,8 +27,6 @@ class FlightsController < ApplicationController
   private
 
   def flight_params
-    params.permit(:departure_airport_id, :arrival_airport_id, :departure_datetime, :any_date)
+    params.permit(:departure_airport_id, :arrival_airport_id, :departure_datetime, :any_date, :passenger_number, :commit)
   end
-
-
 end

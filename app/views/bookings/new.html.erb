@@ -2,14 +2,17 @@
 <h2><%= @flight.departure_datetime.strftime('%H:%M') %> - <%= @flight.departure_datetime.strftime('%d/%m/%Y') %></h2>
 
 <%= form_with model: @booking do |form| %>
+  <% p_number = 1 %>
   <%= form.hidden_field :flight_id, value: @flight.id %>
-  <%= form.fields_for :passenger, Passenger.new do |p_form| %>
+  <%= form.fields_for :passengers, [Passenger.new] * @passenger_number.to_i do |p_form| %>
+    <h2>Enter Details for Passenger <%= p_number %>:</h2>
     <%= p_form.label :name %>
     <%= p_form.text_field :name %>
 
     <%= p_form.label :email %>
     <%= p_form.text_field :email %>
-
-    <%= p_form.submit %>
+    <br><br>
+    <% p_number += 1%>
   <% end %>
+  <%= form.submit %>
 <% end %>

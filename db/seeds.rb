@@ -8,6 +8,8 @@
 
 Flight.delete_all
 Airport.delete_all
+Booking.delete_all
+Passenger.delete_all
 
 Airport.create(code: 'LHR', name: 'Heathrow Airport')
 Airport.create(code: 'LGW', name: 'Gatwick Airport')
