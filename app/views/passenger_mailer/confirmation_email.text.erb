@@ -1,0 +1,13 @@
+Here's your booking confirmation, <%= @passenger.name %>
+===============================================
+
+Your flight to <%= @booking.flight.arrival_airport.name %> has successfully been booked!
+
+Here's the details:
+
+Departure airport: <%= @booking.flight.departure_airport.name %>
+Arrival airport: <%= @booking.flight.arrival_airport.name %>
+Date: <%= @booking.flight.departure_datetime.strftime('%d/%m/%Y') %>
+Time: <%= @booking.flight.departure_datetime.strftime('%H:%M') %> 
+
+Thanks for booking your flight through our service!

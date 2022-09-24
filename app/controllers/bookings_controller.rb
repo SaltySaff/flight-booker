@@ -10,6 +10,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
+      @booking.passengers.each do |passenger|
+        PassengerMailer.with(passenger: passenger, booking: @booking).confirmation_email.deliver_now
+      end
       redirect_to @booking
     else
       redirect_to root_path
